@@ -1,0 +1,19 @@
+@use 'variables' as *;
+@use 'transition';
+
+%message {
+  padding: 10px;
+  border-radius: $border-radius;
+  margin-bottom: 15px;
+}
+
+.success {
+  @extend %message;
+  color: $alert-success;
+  text-transform: uppercase;
+}
+
+.error {
+  @extend %message;
+  color: $alert-error;
+}

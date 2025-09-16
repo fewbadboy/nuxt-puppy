@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+@import '@nuxt/ui';
+
+@theme static {
+  --container-side: 200px;
+  --color-cyan-700: #2ff;
+}
+
+:root {
+  --ui-container-side: var(--container-side);
+  --ui-primary: var(--ui-color-primary-700);
+}
+
+.dark {
+  --ui-primary: var(--ui-color-primary-200);
+}
