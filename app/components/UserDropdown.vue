@@ -2,7 +2,7 @@
   <UDropdownMenu
     :items="items"
     :ui="{
-      content: 'w-48',
+      content: '',
     }"
   >
     <UButton icon="i-lucide-user" color="neutral" variant="outline" />
@@ -27,8 +27,13 @@ const items = ref<DropdownMenuItem[][]>([
     {
       label: 'Logout',
       icon: 'i-lucide-log-out',
-      kbds: ['shift', 'meta', 'q'],
+      kbds: ['meta', 'q'],
+      onSelect() {
+        navigateTo('/login')
+      },
     },
   ],
 ])
+
+defineShortcuts(extractShortcuts(items.value))
 </script>

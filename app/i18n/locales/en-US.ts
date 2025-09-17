@@ -1,3 +1,6 @@
 export default {
-  welcome: 'Welcome!',
+  username: 'Username',
+  password: 'Password',
+  login: 'Login',
+  user: 'User',
 }

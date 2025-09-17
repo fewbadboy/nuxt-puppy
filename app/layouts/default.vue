@@ -2,7 +2,12 @@
   <div>
     <div class="flex self-center h-14">
       <img src="~/assets/images/fe_all.png" />
-      <UNavigationMenu :items="menu" class="w-full justify-center" />
+      <UNavigationMenu
+        class="w-full justify-center"
+        color="primary"
+        :items="menu"
+        :ui="{}"
+      />
       <div class="flex self-center pr-4">
         <UserDropdown />
       </div>

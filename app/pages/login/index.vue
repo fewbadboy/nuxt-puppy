@@ -1,47 +1,84 @@
 <template>
-  <div class="h-full flex justify-center self-center">
-    <UForm :state="loginInfo" :validate="validate" class="space-y-4">
-      <UFormField label="Username" name="username" :ui="formFieldFlex" required>
-        <UInput v-model="loginInfo.username" />
+  <div class="login">
+    <div class="flex justify-end">
+      <LanguageDropdown />
+    </div>
+    <UForm
+      class="space-y-4 text-center"
+      :schema="schema"
+      :state="state"
+      @submit="handleLogin"
+    >
+      <UFormField
+        name="username"
+        :label="t('login.username')"
+        :ui="formFieldFlex"
+        required
+      >
+        <UInput v-model="state.username" />
       </UFormField>
 
-      <UFormField label="Password" name="password" :ui="formFieldFlex" required>
-        <UInput v-model="loginInfo.password" type="password" />
+      <UFormField
+        name="password"
+        :label="t('login.password')"
+        :ui="formFieldFlex"
+        required
+      >
+        <UInput v-model="state.password" type="password" />
       </UFormField>
 
-      <UButton @click="handleLogin"> Submit </UButton>
+      <UButton type="submit" class="w-full justify-center">
+        {{ t('login') }}
+      </UButton>
     </UForm>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { FormError } from '@nuxt/ui'
-import type { UserLogin } from '~/global'
+import * as v from 'valibot'
+import type { FormSubmitEvent } from '@nuxt/ui'
 import { formFieldFlex } from '~/ui.config'
+const { t } = useI18n()
 const toast = useToast()
 
 console.log(useRequestURL())
+console.log(useLocale())
 definePageMeta({
   layout: 'blank',
 })
 
-const loginInfo = reactive<UserLogin>({
+type Schema = v.InferOutput<typeof schema>
+
+const state = reactive<Schema>({
   username: '',
   password: '',
 })
 
-const validate = (info: UserLogin): FormError[] => {
-  const errors = []
-  if (!info.username) errors.push({ name: 'username', message: 'Required' })
-  if (!info.password) errors.push({ name: 'password', message: 'Required' })
-  return errors
-}
+const schema = v.object({
+  username: v.pipe(
+    v.string(),
+    v.nonEmpty(() => t('login.vUsername'))
+  ),
+  password: v.pipe(
+    v.string(),
+    v.nonEmpty(() => t('login.vPassword')),
+    v.minLength(8, () => t('login.vPasswordMin'))
+  ),
+})
 
-function handleLogin() {
+async function handleLogin(event: FormSubmitEvent<Schema>) {
+  console.log(event.data)
   toast.add({
     title: 'Success',
     description: 'The form has been submitted.',
     color: 'success',
   })
+  await navigateTo('/')
 }
 </script>
+
+<style>
+.login {
+  @apply relative w-[260px] flex flex-col justify-center self-center top-1/2 left-1/2 -translate-1/2;
+}
+</style>

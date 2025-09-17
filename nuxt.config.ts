@@ -55,21 +55,11 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
   ],
   i18n: {
-    defaultLocale: 'zh_cn',
     strategy: 'no_prefix',
+    defaultLocale: 'en',
     locales: [
-      {
-        code: 'zh_cn',
-        name: '中文',
-        language: 'zh-CN',
-        // file: 'zh-CN.ts',
-      },
-      {
-        code: 'en',
-        name: 'English',
-        language: 'en-US',
-        // file: 'en-US.ts',
-      },
+      { code: 'en', name: 'English' },
+      { code: 'zh_cn', name: '中文' },
     ],
   },
   ui: {

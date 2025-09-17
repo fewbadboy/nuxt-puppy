@@ -1,6 +1,5 @@
 {
-  "name": "nuxt-app",
-  "private": true,
+  "name": "nuxt-puppy",
   "type": "module",
   "scripts": {
     "build": "nuxt build",
@@ -19,6 +18,7 @@
     "@unhead/vue": "^2.0.14",
     "gsap": "^3.13.0",
     "nuxt": "^4.1.2",
+    "valibot": "^1.1.0",
     "vue": "^3.5.21",
     "vue-router": "^4.5.1"
   },
