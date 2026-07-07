@@ -1,3 +1,5 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
 @font-face {
   font-family: 'FZKT';
   src: url('/fonts/FZKT.ttf') format('truetype');
@@ -7,9 +9,72 @@
 }
 
 body {
-  font-family: 'FZKT', sans-serif;
+  font-family:'FZKT', sans-serif;
 }
 
 .red {
   color: red;
+}
+
+/* 进入更深层级：左滑 */
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: all 0.4s ease;
+}
+
+.slide-left-enter-from {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-left-leave-to {
+  opacity: 0;
+  transform: translateX(-30%);
+}
+
+/* 返回上级：右滑 */
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: all 0.4s ease;
+}
+
+.slide-right-enter-from {
+  opacity: 0;
+  transform: translateX(-30%);
+}
+
+.slide-right-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+/* 同级页面切换 */
+.layout-enter-active,
+.layout-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.layout-enter-from,
+.layout-leave-to {
+  opacity: 0;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
+
+.rotate-enter-active,
+.rotate-leave-active {
+  transition: all 0.4s;
+}
+.rotate-enter-from,
+.rotate-leave-to {
+  opacity: 0;
+  transform: rotate3d(1, 1, 1, 15deg);
 }

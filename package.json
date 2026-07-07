@@ -10,12 +10,22 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/ui": "^4.9.0",
+    "@nuxtjs/i18n": "^10.4.0",
+    "@pinia/nuxt": "^0.11.3",
     "animate.css": "^4.1.1",
-    "nuxt": "^4.4.6",
-    "vue": "^3.5.34",
-    "vue-router": "^5.0.7"
+    "evlog": "^2.20.0",
+    "nuxt": "^4.4.8",
+    "nuxt-security": "^2.6.0",
+    "pinia": "^3.0.4",
+    "tailwindcss": "^4.3.2",
+    "vee-validate": "^4.15.1",
+    "vue": "^3.5.39",
+    "vue-router": "^5.1.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.115",
     "@nuxtjs/tailwindcss": "^6.14.0"
   }
 }

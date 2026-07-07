@@ -5,5 +5,10 @@ export default defineAppConfig({
     colors: {
       primary: '#ff0000',
     }
+  },
+  ui: {
+    main: {
+      base: ''
+    }
   }
 })
